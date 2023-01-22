@@ -45,13 +45,14 @@ class NewsCubit extends Cubit<NewsStates>{
   void getBusiness(){
     emit(NewsGetBusinessLoadingState());
     DioHelper.getData(
-        url: 'v1/quran/ar.alafasy/',
-        // query: {
-        //   'language': 'ar',
-        //   'category':'alafasy',
-        // }
+        url:'v2/top-headlines',
+        query:{
+          'country':'eg',
+          'category':'business',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
+        }
     ).then((value) {
-      business=value.data['data']['surahs'];
+      business=value.data['articles'];
       emit(NewsGetBusinessSuccessState());
     }).catchError((error){
       print(error.toString());
@@ -67,7 +68,7 @@ class NewsCubit extends Cubit<NewsStates>{
         query:{
           'country':'eg',
           'category':'sports',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
         }
     ).then((value){
       sports=value.data['articles'];
@@ -78,6 +79,7 @@ class NewsCubit extends Cubit<NewsStates>{
       emit((NewsGetSportsErrorState(error.toString())));
     });
   }
+
   List<dynamic> science=[];
   void getScience(){
     emit(NewsGetScienceLoadingState());
@@ -86,9 +88,12 @@ class NewsCubit extends Cubit<NewsStates>{
         query:{
           'country':'eg',
           'category':'science',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
 
         }
+        //fff
+
+        //468597
     ).then((value){
       science=value.data['articles'];
       print(science[0]['title']);
@@ -100,6 +105,8 @@ class NewsCubit extends Cubit<NewsStates>{
 
     });
   }
+  //nbnb5555
+  //555
   List<dynamic> policy=[];
   void getPolicy(){
     emit(NewsGetPolicyLoadingState());
@@ -108,7 +115,7 @@ class NewsCubit extends Cubit<NewsStates>{
         query:{
           'country':'eg',
           'category':'politics',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
         }
     ).then((value){
       policy=value.data['articles'];
@@ -126,7 +133,7 @@ class NewsCubit extends Cubit<NewsStates>{
         url:'v2/everything',
         query:{
           'q':value,
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
         }
     ).then((value){
       search=value.data['articles'];
@@ -146,7 +153,7 @@ class NewsCubit extends Cubit<NewsStates>{
         query:{
           'country':'eg',
           'category':'entertainment',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
         }
     ).then((value){
       entertainment=value.data['articles'];
@@ -164,7 +171,7 @@ class NewsCubit extends Cubit<NewsStates>{
         query:{
           'country':'eg',
           'category':'technology',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'7d2f289e8a7742a1951724d05bef8e81',
         }
     ).then((value){
       technology=value.data['articles'];

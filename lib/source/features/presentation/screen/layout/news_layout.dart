@@ -6,6 +6,7 @@ import 'package:news/source/confg/route/route.dart';
 import 'package:news/source/core/utils/fonts.dart';
 import 'package:news/source/features/presentation/cubit/cubit.dart';
 import 'package:news/source/features/presentation/cubit/states.dart';
+import 'package:news/source/features/presentation/screen/search.dart';
 class NewsLayout extends StatelessWidget {
   const NewsLayout({Key key}) : super(key: key);
 
@@ -30,10 +31,7 @@ class NewsLayout extends StatelessWidget {
               IconButton(
                 icon:Icon(Icons.search),
                 onPressed: (){
-                  Navigator.pushNamed(
-                      context,
-                      Routes.search
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
                 },
 
               ),

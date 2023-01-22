@@ -11,6 +11,8 @@ import '../../features/presentation/screen/web_view/web_view_screen.dart';
 Widget defaultFormField({
   @required TextEditingController controller,
   @required TextInputType type,
+  @required TextInputType o,
+  //52jh
   Function(String) validate,
   Function(String) onSubmit,
   Function(String) onChange,
@@ -158,17 +160,17 @@ Widget MyDivider()=>Padding(
 );
 
 
-Widget buildArticleItem(surahs,context,)=>Container(
+Widget buildArticleItem(article,context,)=>Container(
   child:   InkWell//علشان يخلى مجموعه عناصر مع بعض يتداس عليهم كأنهم عنصر واحد
     (
 
     onTap: (){
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => WebViewScreen(surahs["url"]),
-      //     )
-      // );
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => WebViewScreen(article["url"]),
+          )
+      );
     },
 
     child:   Padding(
@@ -212,7 +214,7 @@ Widget buildArticleItem(surahs,context,)=>Container(
 
 
                     image: NetworkImage(
-                      '',
+                      '${article['urlToImage']}',
 
                     ),
 
@@ -240,15 +242,20 @@ Widget buildArticleItem(surahs,context,)=>Container(
 
             width:20.0 ,
 
-
+//kkkkk
 
           ),
+//mnb
+        //ll
 
 
+//5555
 
+
+          //hello
           Expanded(
-
-
+//52525
+//252
 
             child: Container(
 
@@ -279,7 +286,7 @@ Widget buildArticleItem(surahs,context,)=>Container(
 
 
                     child: Text(
-                      '${surahs[0]['englishName']}',
+                      '${article['title']}',
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                      style:Theme.of(context).textTheme.bodyText2,
@@ -295,7 +302,7 @@ Widget buildArticleItem(surahs,context,)=>Container(
 
 
                   Text(
-                    '${surahs[0]['name']}',
+                    '${article['publishedAt']}',
 
 
 
@@ -350,7 +357,8 @@ Widget buildArticleItem(surahs,context,)=>Container(
 
 
 Widget articleConditionBuilder(list,context,{isSearch=false})=>ConditionalBuilder(
-  condition: true,//kjhg
+  condition: list.length>0,
+  //kjhg
   //sdcsdcsdc
   builder: (context)=>ListView.separated(
     physics:BouncingScrollPhysics(),//علشان يحوش اللون الازرق لتفوق وميكنش فيه عناصر تانى وتكون الليست انتهت  فلما اشد ميظهرش لون ازرق
@@ -358,5 +366,8 @@ Widget articleConditionBuilder(list,context,{isSearch=false})=>ConditionalBuilde
     separatorBuilder: (context , index)=>MyDivider(),
     itemCount:list.length,
   ),
-  fallback: (context)=>isSearch?Container():Center(child: LinearProgressIndicator()),
+  fallback: (context)=>isSearch?Container():Center(
+      child: CupertinoActivityIndicator(radius: 50,)
+
+  ),
 );

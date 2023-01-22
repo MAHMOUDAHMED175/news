@@ -9,7 +9,7 @@ class DioHelper{
   static init(){
     dio=Dio(
       BaseOptions(
-        baseUrl: 'http://api.alquran.cloud/',
+        baseUrl: 'https://newsapi.org/',
         receiveDataWhenStatusError: true,
       )
     );
