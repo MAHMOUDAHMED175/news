@@ -18,7 +18,8 @@ class EntertainmentScreen extends StatelessWidget {
         return articleConditionBuilder(list,context);
 
 
-
+//58252525525252555
+      //55
       },
     );
   }
